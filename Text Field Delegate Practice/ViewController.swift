@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var zipcodeTextField: UITextField!
+    
+    let zipcodeTextFieldDelegate = ZipcodeTextFieldDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.zipcodeTextField.delegate = zipcodeTextFieldDelegate
     }
 
 
