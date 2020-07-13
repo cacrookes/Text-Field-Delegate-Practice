@@ -22,10 +22,12 @@ class CurrencyTextFieldDelegate : NSObject, UITextFieldDelegate {
         
         // grab the numeric part of the string
         if var digits = Double(updatedText.dropFirst(1)) {
+            // we want to display the results to two significant digits
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 2
             formatter.minimumFractionDigits = 2
-            // detect if a character was delete
+            
+            // detect if a character was deleted or added.
             if updatedText.count < currentText.count {
                 digits = digits / 10
             } else {
