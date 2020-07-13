@@ -57,6 +57,8 @@
                     </view>
                     <connections>
                         <outlet property="currencyTextField" destination="Yll-wk-ZBC" id="Ju0-W8-kta"/>
+                        <outlet property="lockTextFieldSwitch" destination="RfI-gg-h9v" id="cQj-Yv-yj7"/>
+                        <outlet property="lockableTextField" destination="JJM-wC-tt3" id="MbY-bm-d6R"/>
                         <outlet property="zipcodeTextField" destination="CIS-wE-2UI" id="76I-ph-b89"/>
                     </connections>
                 </viewController>

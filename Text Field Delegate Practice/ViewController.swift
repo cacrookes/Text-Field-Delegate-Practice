@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var zipcodeTextField: UITextField!
     @IBOutlet weak var currencyTextField: UITextField!
+    @IBOutlet weak var lockableTextField: UITextField!
+    @IBOutlet weak var lockTextFieldSwitch: UISwitch!
+    
     
     let zipcodeTextFieldDelegate = ZipcodeTextFieldDelegate()
     let currencyTextFieldDelegate = CurrencyTextFieldDelegate()
@@ -21,8 +24,15 @@ class ViewController: UIViewController {
 
         self.zipcodeTextField.delegate = zipcodeTextFieldDelegate
         self.currencyTextField.delegate = currencyTextFieldDelegate
+        self.lockableTextField.delegate = self
     }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return lockTextFieldSwitch.isOn
+    }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return lockTextFieldSwitch.isOn
+    }
 }
 
