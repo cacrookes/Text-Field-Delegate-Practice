@@ -21,11 +21,17 @@ class CurrencyTextFieldDelegate : NSObject, UITextFieldDelegate {
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
         // grab the numeric part of the string
-        if let digits = Double(updatedText.dropFirst(1)) {
+        if var digits = Double(updatedText.dropFirst(1)) {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 2
             formatter.minimumFractionDigits = 2
-            let stringDigits = formatter.string(for: (digits * 10)) ?? "0.00"
+            // detect if a character was delete
+            if updatedText.count < currentText.count {
+                digits = digits / 10
+            } else {
+                digits = digits * 10
+            }
+            let stringDigits = formatter.string(for: (digits)) ?? "0.00"
             textField.text = "$" + stringDigits
         }
         
